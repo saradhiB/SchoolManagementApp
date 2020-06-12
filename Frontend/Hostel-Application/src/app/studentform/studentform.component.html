@@ -1,0 +1,107 @@
+<div class="bg-light">
+  <form class="form-group" #studentform="ngForm" >
+    <!-- ng-submit="submit()" -->
+    <div class="container" style="min-height:500px;"><br>
+
+
+
+      <h1>Enter Student Data :</h1>
+      <div>
+        <label class="form-label">Student Name</label>
+        <span class="requiredfield">* :-</span>
+        <input class="form-input" type="text" placeholder="name" #studentName="ngModel" [(ngModel)]="student.studentName"
+          id="upperClass" maxlength="25" minlength="4" name="studentName" required>
+      </div>
+      <div>
+        <label class="form-label">Date of Birth</label>
+        <span class="requiredfield">* :-</span>
+        <input class="form-input" type="text" [(ngModel)]="student.dob" name="dateofbirth" pattern="^(3[01]|[12][0-9]|0[1-9])-(1[0-2]|0[1-9])-[0-9]{4}$"
+          #dateofbirth="ngModel" placeholder="DD-MM-YYYY" required>
+        <span *ngIf="dateofbirth.invalid && (dateofbirth.dirty || dateofbirth.touched)" class="error-block">
+          <span *ngIf="dateofbirth.errors.required">DOB is required</span>
+          <span *ngIf="dateofbirth.errors.pattern">Please enter valid DOB</span>
+        </span>
+      </div>
+
+      <div>
+        <label class="form-label">School Name</label>
+        <span class="requiredfield">* :-</span>
+        <input class="form-input" type="text" placeholder="school Name" [(ngModel)]="student.schoolName" id="upperClass"
+          maxlength="35" minlength="4" name="schoolName" #schoolName="ngModel" required>
+      </div>
+
+      <div>
+        <label class="form-label">Promated Class</label>
+        <span class="requiredfield">* :-</span>
+        <input class="form-input" type="number" placeholder="Class" id="upperClass" [(ngModel)]="student.promotedClass"
+          maxlength="2" minlength="1" name="promotedClass" #promotedClass="ngModel" required>
+      </div>
+
+      <div>
+        <label class="form-label">Father Name</label>
+        <span class="requiredfield">* :-</span>
+        <input class="form-input" type="text" placeholder="father Name" id="upperClass" [(ngModel)]="student.fatherName"
+          maxlength="30" minlength="4" name="fatherName" #fatherName="ngModel">
+      </div>
+      <div>
+        <label class="form-label">Mother Name</label>
+        <span class="requiredfield">* :-</span>
+        <input class="form-input" type="text" placeholder="Mother Name" id="upperClass" [(ngModel)]="student.motherName"
+          maxlength="30" minlength="4" name="motherName" #motherName="ngModel">
+      </div>
+
+      <div>
+        <label class="form-label">Occupation</label>
+        <span class="requiredfield">* :-</span>
+        <input class="form-input" type="text" placeholder="Occupation" id="upperClass" [(ngModel)]="student.occupation"
+          maxlength="40" minlength="4" name="occupation" #occupation="ngModel">
+      </div>
+
+      <div>
+        <label class="form-label">Mobile Number</label>
+        <span class="requiredfield">* :-</span>
+        <input class="form-input" type="text" placeholder="Number" id="upperClass" [(ngModel)]="student.mobileNumber"
+          maxlength="10" minlength="10" name="number" #number="ngModel" required>
+      </div>
+      <div>
+        <label class="form-label">Door Number</label>
+        <span class="requiredfield">* :-</span>
+        <input class="form-input" type="text" placeholder="Door Number" id="upperClass" [(ngModel)]="student.doorNumber"
+          maxlength="30" minlength="4" name="doorNumber" #doorNumber="ngModel" required>
+      </div>
+      <div>
+        <label class="form-label">Street Name</label>
+        <span class="requiredfield">* :-</span>
+        <input class="form-input" type="text" placeholder="Street Name" id="upperClass" [(ngModel)]="student.streetName"
+          maxlength="30" minlength="4" name="streetName" #streetName="ngModel" required>
+      </div>
+      <div>
+        <label class="form-label">Locality</label>
+        <span class="requiredfield">* :-</span>
+        <input class="form-input" type="text" placeholder="Locality" id="upperClass" [(ngModel)]="student.locality"
+          maxlength="30" minlength="4" name="locality" #locality="ngModel" required>
+      </div>
+      <div>
+        <div class="row-sm-4" id="sub">
+
+          <button class="btn btn-primary" type="submit" (click)="saveData()" [disabled]="!studentform.valid">Submit
+          </button>
+
+        </div>
+        <div class="col-sm-4" id="reset">
+
+          <button class="btn btn-primary" type="reset" (click)="clear()">Clear
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </form>
+
+
+
+</div>
+<div class="alert alert-success" role="alert" *ngIf="showResult">
+  DATA UPDATED SUCCESSFULLY
+</div>

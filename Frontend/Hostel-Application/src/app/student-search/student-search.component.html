@@ -1,0 +1,91 @@
+<form #studentform="ngForm" #studentsearch="ngForm">
+  <div class="site-section pt-0 pb-0 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+
+          <form class="trip-form">
+            <div class="row align-items-center mb-4">
+              <div class="col-md-6">
+                <h3 class="m-0">Search Student here</h3>
+              </div>
+              <!-- <div class="col-md-6 text-md-right">
+                <span class="text-primary">32</span> <span>cars available</span></span>
+              </div> -->
+            </div>
+            <div class="row">
+              <div class="form-group col-md-3">
+                <label for="cf-1">Student Name :</label>
+                <input type="text" id="cf-1" placeholder="StudentName" class="form-control" [(ngModel)]="studentName"
+                  name="name" #name="ngModel" minlength="4" required>
+              </div>
+              <div class="form-group col-md-3">
+                <label for="cf-2">School Name</label>
+                <input type="text" id="cf-2" placeholder="School Name" class="form-control" [(ngModel)]="schoolName"
+                  name="school" #school="ngModel" minlength="4" required>
+              </div>
+              <div class="form-group col-md-3">
+                <label for="cf-3">Mobile Number</label>
+                <input type="text" id="cf-3" placeholder="Mobile Number" class="form-control" [(ngModel)]="studentMobile"
+                  name="mobile" #mobile="ngModel" required minlength="10">
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-lg-2 ">
+                <input type="submit" value="Submit" class="btn btn-primary" (click)="searchStuData(studentsearch.valid)"
+                  [disabled]="!studentsearch.valid">
+              </div>
+
+              <div class="col-lg-4">
+                <input type="reset" value="Clear" class="btn btn-primary" (click)="cleartable()">
+              </div>
+
+            </div>
+
+
+
+
+
+          </form>
+        </div>
+      </div>
+
+
+
+
+      <div *ngIf="showresult">
+
+        <table class="table table-striped">
+          <thead table-dark>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">School Name</th>
+              <th scope="col">Class</th>
+              <th scope="col">Occupation</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <tr *ngFor="let stuData of data">
+              <td>{{stuData.studentName}}</td>
+              <td>{{stuData.schoolName}}</td>
+              <td>{{stuData.promatedClass}}</td>
+              <td>{{stuData.fatherOccupation}}</td>
+
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+
+      <div *ngIf="final">
+        <span>No Data Found</span>
+      </div>
+
+
+    </div>
+  </div>
+</form>
